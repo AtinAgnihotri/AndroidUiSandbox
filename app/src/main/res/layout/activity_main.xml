@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="100dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/hello_world"
+        android:textColor="@color/colorBaccent"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/edtTxtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textWelcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:hint="Name"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic|bold"/>
+    <!--        android:inputType="textEmailAddress"-->
+    <!--        android:inputType="textPassword"-->
+    <!--        android:lines="4"-->
+
+
+    <Button
+        android:id="@+id/btnHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textWelcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorAccent"
+        android:text="@string/btn_hello" />
+    <!--        android:onClick="onHelloBtnClicked"/>-->
+
+</RelativeLayout>
