@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LinearActivity">
+    tools:context=".LinearActivity"
+    android:orientation="vertical">
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    All the ui elements inside Linear Layout-->
+<!--    are placed line after line-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:id="@+id/txtHelloLinear"
+        android:background="@color/colorBaccent"
+        android:layout_weight="20"/>
+<!--    To center this textview, you'd have to place-->
+<!--    a relative layout inside this linear one and then-->
+<!--    use the layouts available in that-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/txtNameLinear"
+        android:background="@color/colorAccent"
+        android:layout_weight="60"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Say Hello"
+        android:id="@+id/btnHelloLinear"
+        android:layout_weight="20"/>
+
+</LinearLayout>
