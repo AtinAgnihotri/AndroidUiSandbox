@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+        
     }
 
 //    (Way # 3)
@@ -54,9 +55,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnHello:
 //                System.out.println("Hello");
-                Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
                 textWelcome.setText("Hello " + edtTxtName.getText().toString());
                 break;
+            case R.id.edtTxtName:
+                System.out.println("Edit text was pressed");
+                Toast.makeText(this, "Attempting to type something", Toast.LENGTH_LONG).show();
+                break;
+//            case R.id.textWelcome:
+//                System.out.println("TextView was pressed");
+//                break;
             default:
                 break;
         }
