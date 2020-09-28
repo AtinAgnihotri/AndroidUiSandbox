@@ -3,11 +3,13 @@ package com.atinagnihotri.uisandbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CheckBox chkBoxHarry, chkBoxMatrix, chkBoxJoker;
     RadioButton rbMarried;
     RadioGroup rgMaritalStatus;
+    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         chkBoxJoker = findViewById(R.id.chkBoxJoker);
         rbMarried = findViewById(R.id.rbMarried);
         rgMaritalStatus = findViewById(R.id.rgMaritalStatus);
+        progressBar = findViewById(R.id.progessBar);
 
         int checkedRgButton = rgMaritalStatus.getCheckedRadioButtonId();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0; i<10; i++){
+                    progressBar.incrementProgressBy(10);
+//                    Thread.sleep(500);
+                    SystemClock.sleep(500);
+                }
+            }
+        });
+
+        thread.start();
 
 //        (Way # 3)
         btnHello.setOnClickListener(this);
@@ -83,12 +101,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch (checkedId){
                     case R.id.rbMarried:
                         Toast.makeText(MainActivity.this, "Married", Toast.LENGTH_SHORT).show();
+//                        progressBar.setVisibility(View.GONE);
                         break;
                     case R.id.rbSingle:
                         Toast.makeText(MainActivity.this, "Single", Toast.LENGTH_SHORT).show();
+//                        progressBar.setVisibility(View.VISIBLE);
                         break;
                     case R.id.rbInRel:
                         Toast.makeText(MainActivity.this, "In Relationship", Toast.LENGTH_SHORT).show();
+//                        progressBar.setVisibility(View.GONE);
                         break;
                     default:
                         break;
