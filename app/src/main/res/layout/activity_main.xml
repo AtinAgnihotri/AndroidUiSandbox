@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="100dp"
+    android:padding="50dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -42,5 +42,39 @@
         android:background="@color/colorAccent"
         android:text="@string/btn_hello" />
     <!--        android:onClick="onHelloBtnClicked"/>-->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moviesRelativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harry Potter"
+            android:layout_marginTop="15dp"
+            android:id="@+id/chkBoxHarry"
+            android:checked="true"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/chkBoxHarry"
+            android:layout_marginTop="15dp"
+            android:id="@+id/chkBoxMatrix"
+            android:text="The Matrix"
+            android:checked="true"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/chkBoxMatrix"
+            android:layout_marginTop="15dp"
+            android:id="@+id/chkBoxJoker"
+            android:text="Joker"
+            android:checked="false"/>
+    </RelativeLayout>
+
+
 
 </RelativeLayout>

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText edtTxtName;
     TextView textWelcome;
+    CheckBox chkBoxHarry, chkBoxMatrix, chkBoxJoker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnHello = findViewById(R.id.btnHello);
         edtTxtName = findViewById(R.id.edtTxtName);
         textWelcome = findViewById(R.id.textWelcome);
+        chkBoxHarry = findViewById(R.id.chkBoxHarry);
+        chkBoxMatrix = findViewById(R.id.chkBoxMatrix);
+        chkBoxJoker = findViewById(R.id.chkBoxJoker);
 
 //        (Way # 3)
         btnHello.setOnClickListener(this);
@@ -44,7 +50,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
-        
+
+        if (chkBoxHarry.isChecked()){
+            Toast.makeText(MainActivity.this, "You have watched Harry Porter", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "You need to watch Harry Porter", Toast.LENGTH_SHORT).show();
+        }
+
+        // Similarly can also be implemented on Class level, with overridden methods
+        chkBoxHarry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    Toast.makeText(MainActivity.this, "You have watched Harry Porter", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "You need to watch Harry Porter", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
 //    (Way # 3)
