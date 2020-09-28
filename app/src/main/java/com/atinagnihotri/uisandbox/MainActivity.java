@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText edtTxtName;
     TextView textWelcome;
     CheckBox chkBoxHarry, chkBoxMatrix, chkBoxJoker;
+    RadioButton rbMarried;
+    RadioGroup rgMaritalStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         chkBoxHarry = findViewById(R.id.chkBoxHarry);
         chkBoxMatrix = findViewById(R.id.chkBoxMatrix);
         chkBoxJoker = findViewById(R.id.chkBoxJoker);
+        rbMarried = findViewById(R.id.rbMarried);
+        rgMaritalStatus = findViewById(R.id.rgMaritalStatus);
+
+        int checkedRgButton = rgMaritalStatus.getCheckedRadioButtonId();
 
 //        (Way # 3)
         btnHello.setOnClickListener(this);
@@ -65,6 +73,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, "You have watched Harry Porter", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "You need to watch Harry Porter", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        rgMaritalStatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rbMarried:
+                        Toast.makeText(MainActivity.this, "Married", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbSingle:
+                        Toast.makeText(MainActivity.this, "Single", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rbInRel:
+                        Toast.makeText(MainActivity.this, "In Relationship", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
                 }
             }
         });
