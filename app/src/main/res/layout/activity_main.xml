@@ -116,6 +116,15 @@
         android:visibility="visible"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:max="100"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/progessBar"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/myImage"/>
+
 <!--        android:progress="30"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:visibility="gone"/>-->
