@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ui_sandbox"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
-        <activity android:name=".XMLTradeMarkActivity"></activity>
+        <activity android:name=".SnackBarCardActivity"></activity>
+        <activity android:name=".MaterialDesignActivity" />
+        <activity android:name=".XMLTradeMarkActivity" />
         <activity android:name=".ListSpinnerMenuActivity" />
         <activity android:name=".MainActivityBackup" />
         <activity android:name=".ConstraintActivity" />
