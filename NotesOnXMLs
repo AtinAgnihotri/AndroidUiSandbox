@@ -1,0 +1,35 @@
+# NOTES ON DIFF XMLs
+1) AndroidManifest.xml
+    > The most imp xml file in your codebase for your app
+    > Define general attrs/features of the app
+    > attrs like
+        * icon, roundIcon
+        * label
+        * app theme
+        * Launcher activity
+
+2) Strings.xml
+    > Put the static strings and string-arrays in strings.xml file, and use that instead of hardcoding strings.
+    > Can retrieve in layout xml using @+id/string_name
+    > Can retrieve in code using getString(R.string.string_name)
+    > Can add other strings.xml (For eg, de-rDE/strings.xml  for localisation with exactly the same value as normal one,
+     To see that, change the lang of device to desired lang and see the magic happen)
+
+3) Colors.xml
+    > Like strings.xml, store the static colors here
+    > Define as follows : <color name="color_name">#HEXVAL</color>
+    > In layout xml, can use as @color/color_name
+
+4) Styles.xml
+    > Define the theme of the application here
+    > Can define multiple styles here
+    > Can pass these styles to diff activities.
+    > Diff activities can have diff styles
+
+5) Menus.xml
+    > Not present by default
+    > Can be created by creating directory "menu" in res
+    > Create a menu resource file inside the created dir, eg "main_menu"
+    > Can then create <items></items> inside the menu
+    > Necessary to have android:title="some_title" in item
+
