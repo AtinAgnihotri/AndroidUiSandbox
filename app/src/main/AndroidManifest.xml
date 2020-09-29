@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ui_sandbox"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivityBackup"></activity>
+        <activity android:name=".ListSpinnerMenuActivity"></activity>
+        <activity android:name=".MainActivityBackup" />
         <activity android:name=".ConstraintActivity" />
         <activity android:name=".LinearActivity" />
         <activity android:name=".RelativeActivity" />

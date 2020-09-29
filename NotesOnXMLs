@@ -33,3 +33,8 @@
     > Can then create <items></items> inside the menu
     > Necessary to have android:title="some_title" in item
 
+6) Layout.xml
+    > Most is known
+    > Can create many diff layouts for the same activity
+    > Eg : Landscape, Night Mode, Diff API Version
+
