@@ -2,4 +2,11 @@
     <string name="app_name">UiSandbox</string>
     <string name="hello_world">Hello World</string>
     <string name="btn_hello">Say Hello</string>
+    <string-array name="student_list">
+        <item>John Shepard</item>
+        <item>Elvi Onogonye</item>
+        <item>Rohit Mehra</item>
+        <item>Sikandar Kamal</item>
+        <item>Tenzin Gyatso</item>
+    </string-array>
 </resources>

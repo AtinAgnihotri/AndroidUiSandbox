@@ -3,150 +3,76 @@ package com.atinagnihotri.uisandbox;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
 
-    EditText edtTxtName;
-    TextView textWelcome;
-    CheckBox chkBoxHarry, chkBoxMatrix, chkBoxJoker;
-    RadioButton rbMarried;
-    RadioGroup rgMaritalStatus;
-    ProgressBar progressBar;
 
+public class MainActivity extends AppCompatActivity{
+
+    private ListView citiesList;
+    private Spinner studentSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnHello = findViewById(R.id.btnHello);
-        edtTxtName = findViewById(R.id.edtTxtName);
-        textWelcome = findViewById(R.id.textWelcome);
-        chkBoxHarry = findViewById(R.id.chkBoxHarry);
-        chkBoxMatrix = findViewById(R.id.chkBoxMatrix);
-        chkBoxJoker = findViewById(R.id.chkBoxJoker);
-        rbMarried = findViewById(R.id.rbMarried);
-        rgMaritalStatus = findViewById(R.id.rgMaritalStatus);
-        progressBar = findViewById(R.id.progessBar);
+        citiesList = findViewById(R.id.citiesList);
+        studentSpinner = findViewById(R.id.studentSpinner);
 
-        int checkedRgButton = rgMaritalStatus.getCheckedRadioButtonId();
+        final ArrayList<String> cities = new ArrayList<>();
+        cities.add("Zurich");
+        cities.add("New York");
+        cities.add("Berlin");
+        cities.add("Moscow");
+        cities.add("Madrid");
 
-        Thread thread = new Thread(new Runnable() {
+//        If array is static as it is here, can use string array from strings.xml
+//        See how it is added to spinner in layout xml file
+//        final ArrayList<String> students = new ArrayList<>();
+//        students.add("John Shepard");
+//        students.add("Elvi Onogonye");
+//        students.add("Rohit Mehra");
+//        students.add("Sikandar Kamal");
+//        students.add("Tenzin Gyatso");
+
+        ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cities);
+//        ArrayAdapter<String> studentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, students);
+
+        citiesList.setAdapter(citiesAdapter);
+//        studentSpinner.setAdapter(studentAdapter);
+
+//        studentSpinner.setOnItemSelectedListener();
+        studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void run() {
-                for (int i=0; i<10; i++){
-                    progressBar.incrementProgressBy(10);
-//                    Thread.sleep(500);
-                    SystemClock.sleep(500);
-                }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,
+//                        students.get(position) + " Selected",
+                        studentSpinner.getSelectedItem().toString() + " Selected",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
-        thread.start();
-
-//        (Way # 3)
-        btnHello.setOnClickListener(this);
-
-        // Another way to set onClickListener for the button (Way #2)
-//        btnHello.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("Hello");
-//            }
-//        });
-        
-        // OnClickListener can be implemented for other Views as well
-        // OnClickListener is a type of EventListener among many
-        // For Example
-        btnHello.setOnLongClickListener(new View.OnLongClickListener() {
+        citiesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(MainActivity.this, "Long Pressed", Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-
-        if (chkBoxHarry.isChecked()){
-            Toast.makeText(MainActivity.this, "You have watched Harry Porter", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(MainActivity.this, "You need to watch Harry Porter", Toast.LENGTH_SHORT).show();
-        }
-
-        // Similarly can also be implemented on Class level, with overridden methods
-        chkBoxHarry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    Toast.makeText(MainActivity.this, "You have watched Harry Porter", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "You need to watch Harry Porter", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        rgMaritalStatus.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.rbMarried:
-                        Toast.makeText(MainActivity.this, "Married", Toast.LENGTH_SHORT).show();
-//                        progressBar.setVisibility(View.GONE);
-                        break;
-                    case R.id.rbSingle:
-                        Toast.makeText(MainActivity.this, "Single", Toast.LENGTH_SHORT).show();
-//                        progressBar.setVisibility(View.VISIBLE);
-                        break;
-                    case R.id.rbInRel:
-                        Toast.makeText(MainActivity.this, "In Relationship", Toast.LENGTH_SHORT).show();
-//                        progressBar.setVisibility(View.GONE);
-                        break;
-                    default:
-                        break;
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,
+                        cities.get(position) + " Selected",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-//    (Way # 3)
-//    Implement OnClickListener in MainActivity
-//    And implement it's methods
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnHello:
-//                System.out.println("Hello");
-//                Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
-                textWelcome.setText("Hello " + edtTxtName.getText().toString());
-                break;
-            case R.id.edtTxtName:
-                System.out.println("Edit text was pressed");
-                Toast.makeText(this, "Attempting to type something", Toast.LENGTH_LONG).show();
-                break;
-//            case R.id.textWelcome:
-//                System.out.println("TextView was pressed");
-//                break;
-            default:
-                break;
-        }
-    }
-
-//    (Way #1)
-//    One way to create a ClickListener
-//    Corresponds to onClick in xml
-//    public void onHelloBtnClicked(View view){
-//        TextView textWelcome = findViewById(R.id.textWelcome);
-//        textWelcome.setText("Hello Again!");
-//    }
 }
