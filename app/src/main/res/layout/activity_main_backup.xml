@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="50dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivityBackup">
 
     <TextView
         android:id="@+id/textWelcome"
@@ -125,9 +125,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/myImage"/>
 
-<!--        android:progress="30"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:visibility="gone"/>-->
-
+    <!--        android:progress="30"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:visibility="gone"/>-->
 
 </RelativeLayout>
